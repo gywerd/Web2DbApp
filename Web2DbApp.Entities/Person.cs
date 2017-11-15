@@ -37,12 +37,63 @@ namespace Web2DbApp.Entities
         {
             return string.Format("{0} {1} {2}", titleOfCourtesy, firstName, lastName);
         }
+
+        /// <summary>
+        /// returns string with uppercase first letter
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        private string UppercaseFirst(string s)
+        {
+            // Check for empty string.
+            if (string.IsNullOrEmpty(s))
+            {
+                return string.Empty;
+            }
+            // Return char and concat substring.
+            return char.ToUpper(s[0]) + s.Substring(1);
+        }
+
+        /// <summary>
+        /// returns a string with uppercase first letter and no spaces
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        private string ParseString(string s)
+        {
+            string temp = UppercaseFirst(s);
+            temp = temp.Replace(" ", "-");
+            return temp;
+        }
         #endregion
 
         #region Properties
-        public string FirstName { get => firstName; set => firstName = value; }
-        public string LastName { get => lastName; set => lastName = value; }
-        public string TitleOfCourtesy { get => titleOfCourtesy; set => titleOfCourtesy = value; }
+        public string FirstName
+        {
+            get => firstName;
+            set
+            {
+                firstName = ParseString(value);
+            }
+        }
+
+        public string LastName
+        {
+            get => lastName;
+            set
+            {
+                lastName = ParseString(value);
+            }
+        }
+        public string TitleOfCourtesy
+        {
+            get => titleOfCourtesy;
+            set
+            {
+                titleOfCourtesy = ParseString(value);
+            }
+        }
+
         #endregion
     }
 }
