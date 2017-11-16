@@ -57,7 +57,10 @@ namespace Web2DbApp.DataAccess
             executor.ExecuteDeleteAll();
             foreach (Person p in persons)
             {
-                executor.Execute("SavePerson", p);
+                if (p.FirstName != "" && p.LastName != "" & p.TitleOfCourtesy != "")
+                {
+                    executor.Execute("SavePerson", p);
+                }
             }
         }
         #endregion
