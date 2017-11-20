@@ -9,7 +9,7 @@ using Web2DbApp.DataAccess;
 
 namespace Web2DbApp.UI
 {
-    class Program
+    public class Program
     {
         static List<Person> persons;
         static List<Person> mockPersons;
@@ -17,6 +17,7 @@ namespace Web2DbApp.UI
         static MockDataProvider CSM = new MockDataProvider();
         static Person P = new Person();
 
+        static Program() { }
 
         static void Main(string[] args)
         {

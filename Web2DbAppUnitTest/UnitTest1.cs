@@ -122,5 +122,21 @@ namespace Web2DbApp.UnitTest
             int actual = persons.Count;
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        //Tests, that check, that Main can get a NON NULL list of persons from API
+        public void TestMethod7()
+        {
+            //Arrange
+            bool expected = false;
+            List<Person> mockPersons;
+
+            //act
+            mockPersons = CSM.GetPeople(10);
+
+            //assert
+            bool actual = mockPersons.Equals(null);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
