@@ -101,6 +101,7 @@ namespace Web2DbApp.UnitTest
             bool actual = persons.Equals(null);
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         //Tests, that rows is written to database
         public void TestMethod6()
