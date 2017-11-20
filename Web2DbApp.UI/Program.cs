@@ -11,14 +11,17 @@ namespace Web2DbApp.UI
 {
     class Program
     {
-        
+        static List<Person> persons;
+        static List<Person> mockPersons;
+        static Repository CDR = new Repository();
+        static MockDataProvider CSM = new MockDataProvider();
+        static Person P = new Person();
+
 
         static void Main(string[] args)
         {
-            List<Person> persons;
-            Repository CDR = new Repository();
-            MockDataProvider CSM = new MockDataProvider();
-            CSM.MakeMockData();
+            mockPersons = CSM.MakeMockData();
+            SavePeople(mockPersons);
             persons = CDR.GetAll();
             PrintAll(persons);
             Console.ReadKey();
@@ -35,6 +38,16 @@ namespace Web2DbApp.UI
             {
                 Console.WriteLine(p.ToString());
             }
+        }
+
+        /// <summary>
+        /// save people from list to database
+        /// </summary>
+        /// <param name="p">List<Person></param>
+        public static void SavePeople(List<Person> p)
+        {
+            //Repository CDR = new Repository();
+            CDR.SavePersons(p);
         }
         #endregion
     }

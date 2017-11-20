@@ -30,11 +30,24 @@ namespace Web2DbApp.Entities
 
         #region Methods
         /// <summary>
-        /// checks if string contains digits
+        /// returns a string with uppercase first letter and no spaces
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        private string ParseString(string s)
+        {
+            string temp = UppercaseFirst(s);
+            temp = RemoveNumeric(temp);
+            temp = temp.Replace(" ", "-");
+            return temp;
+        }
+
+        /// <summary>
+        /// removes digits from string
         /// </summary>
         /// <param name="s">string</param>
         /// <returns></returns>
-        public string RemoveNumeric(string s)
+        private string RemoveNumeric(string s)
         {
             string res = "";
             foreach (char c in s)
@@ -46,19 +59,6 @@ namespace Web2DbApp.Entities
             }
 
             return res;
-        }
-
-        /// <summary>
-        /// returns a string with uppercase first letter and no spaces
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        private string ParseString(string s)
-        {
-            string temp = UppercaseFirst(s);
-            temp = RemoveNumeric(temp);
-            temp = temp.Replace(" ", "-");
-            return temp;
         }
 
         /// <summary>

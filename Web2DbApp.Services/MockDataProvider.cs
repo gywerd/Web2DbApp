@@ -21,22 +21,13 @@ namespace Web2DbApp.Services
         /// <summary>
         /// fetches a list of random people and save them to the database
         /// </summary>
-        public void MakeMockData()
+        public List<Person> MakeMockData()
         {
             List<Person> people;
             people = GetPeople(10);
-            SavePeople(people);
-
+            return people;
         }
 
-        /// <summary>
-        /// save people from list to database
-        /// </summary>
-        /// <param name="p">List<Person></param>
-        public void SavePeople(List<Person> p)
-        {
-            CDR.SavePersons(p);
-        }
 
         /// <summary>
         /// Fetches chosen amount of people from 'Random User Generator' at https://randomuser.me/

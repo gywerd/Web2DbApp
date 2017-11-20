@@ -71,13 +71,13 @@ namespace Web2DbApp.DataAccess
         /// <summary>
         /// executes a sqlQuery - returns a DataSet
         /// </summary>
-        /// <param name="sqlQuery">string</param>
+        /// <param name="procedureName">string</param>
         /// <returns>DataSet</returns>
-        public DataSet Execute(string sqlQuery)
+        public DataSet Execute(string procedureName)
         {
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
-            SqlCommand command = new SqlCommand(sqlQuery, connection);
+            SqlCommand command = new SqlCommand(procedureName, connection);
             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
             {
                 DataSet set = new DataSet();
@@ -88,7 +88,7 @@ namespace Web2DbApp.DataAccess
         }
 
         /// <summary>
-        /// executes stored procedure that deletes all rows
+        /// executes stored procedure that deletes and recreates Persons-table
         /// </summary>
         public void ExecuteDeleteAll()
         {

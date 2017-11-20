@@ -49,7 +49,7 @@ namespace Web2DbApp.DataAccess
         }
 
         /// <summary>
-        /// Deletes all rows in the database and inserts new rows from list
+        /// Deletes and recreates Persons-table in the database and inserts new rows from list
         /// </summary>
         /// <param name="persons">List<Person></param>
         public void SavePersons(List<Person> persons)
